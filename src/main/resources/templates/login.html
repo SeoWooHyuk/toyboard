@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	
+    <!-- axious사용 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="js/login.js" type="text/javascript"></script>
+</head>
+<body>
+    타임리프트 사용
+	<div id="idtest">
+
+
+	</div>
+
+	<div id="tokentest">
+
+
+	</div>
+
+	<script>
+		// localStorage에서 access_token과 id 값을 가져옴
+		let token = localStorage.getItem('access_token');
+		let idtoken = localStorage.getItem('id');
+	
+	
+		document.getElementById('idtest').innerHTML = '<p>' + idtoken + '</p>';
+		document.getElementById('tokentest').innerHTML = '<p>' + token + '</p>';
+	</script>
+    
+
+
+
+
+	<div style="height:40px; text-align: center;" id="head"></div>
+
+    <div class="text-center">
+		<img class="mb-4" src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"/>
+		<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+	
+		<div class="form-floating">
+		  <input type="email" name="id" class="form-control"  onChange="changeId()" placeholder="Id"/>
+		</div>
+		
+		<div class="form-floating">
+		  <input type="password" name="pwd"  class="form-control" onChange={changePwd} placeholder="Password"/>
+		</div>
+	
+		<button class="w-100 btn btn-lg btn-primary" onClick="login()"><i class="fas fa-sign-in-alt"></i> 로그인</button>
+		</div>
+</body>
+</html>

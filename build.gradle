@@ -1,0 +1,68 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '2.7.13'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.restfulproject'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '11'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+
+	//시큐리티
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation group: 'org.springframework.security', name: 'spring-security-core'
+
+
+	implementation group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+
+	implementation "com.fasterxml.jackson.core:jackson-databind:2.12.5"
+	implementation "org.springdoc:springdoc-openapi-ui:1.7.0"
+	implementation "javax.xml.bind:jaxb-api:2.3.1"
+	implementation "org.glassfish.jaxb:jaxb-runtime:2.3.1"
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.7.0'
+
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	implementation group: 'commons-io', name: 'commons-io', version: '2.12.0'
+
+	implementation group: 'org.json', name: 'json', version: '20230227'
+
+	implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '4.0.0'
+
+	implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '4.0.2'
+
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.7.13'
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
