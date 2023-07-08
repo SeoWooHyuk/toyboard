@@ -8,7 +8,7 @@ import lombok.Setter;
 public class JoinResponse {
 
     private String id;
-
+    
     public JoinResponse(String id) {
         this.id = id;
     }

@@ -1,5 +1,9 @@
 package com.restfulproject.toyboard.member.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,15 +15,17 @@ public class Member{
     private String pwd;
     private String name;
 	private String email;
+	private String roles;
     
     public Member() {}
 
-    public Member(String id, String pw, String name, String email ,int auth) {
+    public Member(String id, String pw, String name, String email, String roles ,int auth) {
         super();
         this.id = id;
         this.pwd = pw;
   	    this.name = name;
 		this.email = email;
+		this.roles = roles;
     }
 
     @Override
@@ -29,6 +35,7 @@ public class Member{
 			", pwd='" + pwd + '\'' +
 			", name='" + name + '\'' +
 			", email='" + email + '\'' +
+			", email='" + roles + '\'' +
 			'}';
 	}
 

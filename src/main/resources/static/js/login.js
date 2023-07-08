@@ -19,9 +19,11 @@ function login(){
             // JWT 토큰 저장
             localStorage.setItem("access_token", resp.data.jwt);
             localStorage.setItem("id", resp.data.id);
+            window.history.back();
+            // window.location.reload();
 
-            var html = '<p th:text="${message}">'+ idtoken + '</p>';
-            document.body.insertAdjacentHTML('beforeend', html);
+            // var html = '<p th:text="${message}">'+ idtoken + '</p>';
+            // document.body.insertAdjacentHTML('beforeend', html);
 
     }).catch((err) => {
         console.log("[Login.js] login() error :<");

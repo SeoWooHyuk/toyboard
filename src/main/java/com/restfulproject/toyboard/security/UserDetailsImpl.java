@@ -1,7 +1,11 @@
 package com.restfulproject.toyboard.security;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
+
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.restfulproject.toyboard.member.domain.Member;
@@ -21,7 +25,9 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
+       List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_"+member.getRoles().toString())); //ROLE_이놈때문이었어 디테일에서 권한부여가안된이유
+        return authorities;
     }
 
     @Override

@@ -43,11 +43,6 @@ public class WebSecurityConfig {
     }
 
       private static final String[] PERMIT_URL_ARRAY = {
-        /* swagger v3 */
-        "/v3/api-docs/**",
-        "/swagger-ui/**",
-        "/",
-        "/user/**"
         
     };
 
@@ -56,16 +51,15 @@ public class WebSecurityConfig {
 
       http.csrf().disable()
           .cors();
+          
      
         http.authorizeHttpRequests(request -> request 
                 .dispatcherTypeMatchers(DispatcherType.FORWARD).permitAll() 
                 .dispatcherTypeMatchers(DispatcherType.INCLUDE).permitAll() 
-                .antMatchers(PERMIT_URL_ARRAY).permitAll()  
-                .antMatchers(HttpMethod.POST).authenticated()
-                .antMatchers(HttpMethod.PATCH).authenticated()
-                .antMatchers(HttpMethod.DELETE).authenticated()
-                .anyRequest().permitAll()  
-        );
+                .anyRequest().permitAll() 
+        )
+        .formLogin().disable()
+        .httpBasic().disable();
        
 
         http.exceptionHandling( exceptionHandling -> exceptionHandling

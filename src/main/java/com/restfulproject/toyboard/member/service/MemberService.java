@@ -74,7 +74,7 @@ public class MemberService {
 
 		// 회원 정보 생성
 		String encodedPwd = encoder.encode(req.getPwd()); //비밀번호 암호화
-		CreateMemberParam param = new CreateMemberParam(req, encodedPwd);
+		CreateMemberParam param = new CreateMemberParam(req, encodedPwd ,"USER");
 
 		Integer result = dao.createMember(param);
 		if (result == 0) {
