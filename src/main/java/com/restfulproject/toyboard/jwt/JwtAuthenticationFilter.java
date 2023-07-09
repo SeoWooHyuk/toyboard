@@ -1,6 +1,7 @@
 package com.restfulproject.toyboard.jwt;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import java.io.IOException;
 import java.util.Arrays;
@@ -39,6 +40,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String userId = null;
         String authToken = null;
 
+            System.out.println("읽었나"+header);
         if (header != null && header.startsWith(TOKEN_PREFIX)) {
             authToken = header.replace(TOKEN_PREFIX,"");
             try {
@@ -53,11 +55,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 System.out.println("JwtAuthenticationFilter: invalid member !");
                 e.printStackTrace();
             }
+            catch (MalformedJwtException e) {
+                System.out.println("JwtAuthenticationFilter: invalid jwt형식이아닙니다. !");
+                // JWT 문자열이 형식에 맞지 않을 때 실행될 예외 처리 코드
+                // e.printStackTrace();
+            }
         } else {
             System.out.println("JwtAuthenticationFilter: request that do not require authorization.");
         }
-        if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
+        if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+           
+        
             UserDetails userDetails = userDetailsService.loadUserByUsername(userId);
 
             if (jwtTokenUtil.validateToken(authToken, userDetails)) {
