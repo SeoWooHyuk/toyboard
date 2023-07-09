@@ -6,6 +6,23 @@ let headers = {
     "Authorization": `Bearer ${localStorage.getItem("access_token")}`
 }
 
+const datas = [
+    {
+      id: 1,
+      item: 'velopert',
+    },
+    {
+      id: 2,
+      item: 'tester',
+
+    },
+    {
+      id: 3,
+      item: 'liz',
+
+    }
+  ];
+
 axios.get("http://localhost:8080",{headers: headers} )
 .then((resp) => {
 

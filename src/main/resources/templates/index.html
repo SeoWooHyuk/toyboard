@@ -35,6 +35,11 @@
         html  +=  '<button class="w-100 btn btn-lg btn-primary" onClick="logout()"><i class="fas fa-sign-in-alt"></i> 로그아웃</button>';
         html  += '</div>';    
     }
+
+    $.each(datas, function(index, data) {
+    html += '<li>' + data.item + '</li>';  //리스트 뽑아내는 테스트
+    });
+
     html += '<p>'+idtoken +'</p>';
    </script>
 
