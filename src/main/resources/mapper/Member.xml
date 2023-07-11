@@ -28,6 +28,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 VALUES(#{id}, #{token}, #{expiration},updatedat) ON DUPLICATE KEY  UPDATE updatedat = NOW()
         </insert>
 
+        <delete id="deletejwttoken" parameterType="String">
+                delete from member_token where id = #{id}
+        </delete>
+
        
 
 

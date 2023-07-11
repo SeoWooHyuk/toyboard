@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.restfulproject.toyboard.member.dto.request.JoinRequest;
 import com.restfulproject.toyboard.member.dto.request.LoginRequest;
+import com.restfulproject.toyboard.member.dto.request.LogoutRequest;
 import com.restfulproject.toyboard.member.dto.response.JoinResponse;
 import com.restfulproject.toyboard.member.dto.response.LoginResponse;
+import com.restfulproject.toyboard.member.dto.response.LogoutResponse;
 import com.restfulproject.toyboard.member.exception.MemberException;
 import com.restfulproject.toyboard.member.service.MemberService;
 
@@ -60,6 +62,14 @@ public class MemberController {
 		System.out.println("UserController login " + new Date());
 		return ResponseEntity.ok(service.login(req));
 	}
+
+
+	@PostMapping("/logout")
+	public ResponseEntity<LogoutResponse> logout(@Valid @RequestBody LogoutRequest req) {
+		System.out.println("UserController login " + new Date());
+		return ResponseEntity.ok(service.logout(req));
+	}
+
 
 
 	/* 요청 DTO 검증 예외처리 핸들러 */

@@ -23,5 +23,7 @@ public interface MemberDao {
 
 	public Integer createjwttoken(CreateMemberTokenParam param);  //화원가입처리
 
+	public Integer deletejwttoken(String id); //중복여부확인
+
 
 }

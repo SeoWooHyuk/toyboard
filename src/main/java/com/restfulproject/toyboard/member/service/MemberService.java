@@ -17,8 +17,10 @@ import com.restfulproject.toyboard.member.dto.param.CreateMemberParam;
 import com.restfulproject.toyboard.member.dto.param.CreateMemberTokenParam;
 import com.restfulproject.toyboard.member.dto.request.JoinRequest;
 import com.restfulproject.toyboard.member.dto.request.LoginRequest;
+import com.restfulproject.toyboard.member.dto.request.LogoutRequest;
 import com.restfulproject.toyboard.member.dto.response.JoinResponse;
 import com.restfulproject.toyboard.member.dto.response.LoginResponse;
+import com.restfulproject.toyboard.member.dto.response.LogoutResponse;
 import com.restfulproject.toyboard.member.exception.MemberException;
 
 import lombok.extern.slf4j.Slf4j;
@@ -108,6 +110,14 @@ public class MemberService {
 
 
 		return new LoginResponse(token, req.getId());
+	}
+
+
+	public LogoutResponse logout(LogoutRequest req) {
+
+		System.out.println(req.getId());
+		// dao.deletejwttoken(req.getId());
+		return new LogoutResponse(null, req.getId());
 	}
 
 
