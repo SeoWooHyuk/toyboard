@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.restfulproject.toyboard.jwt.JwtTokenUtil;
 import com.restfulproject.toyboard.member.dao.MemberDao;
 import com.restfulproject.toyboard.member.dto.param.CreateMemberParam;
+import com.restfulproject.toyboard.member.dto.param.CreateMemberTokenParam;
 import com.restfulproject.toyboard.member.dto.request.JoinRequest;
 import com.restfulproject.toyboard.member.dto.request.LoginRequest;
 import com.restfulproject.toyboard.member.dto.response.JoinResponse;
@@ -22,7 +23,7 @@ import com.restfulproject.toyboard.member.exception.MemberException;
 
 import lombok.extern.slf4j.Slf4j;
 
-
+import java.util.Date;
 @Service
 @Transactional //트랜잭션관리를 위한 어노테이션
 public class MemberService {
@@ -88,8 +89,28 @@ public class MemberService {
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(req.getId());
 		
 		final String token = jwtTokenUtil.generateToken(userDetails); //db에있는 아이디가 시큐리티를 통해 인증되면 jwt토큰 생성
+		
+		String tokenid = jwtTokenUtil.getUsernameFromToken(token);  //아이디
+		Date tokenendtime = jwtTokenUtil.getExpirationDateFromToken(token); //만료시간
+
+		Integer result = dao.createjwttoken(new CreateMemberTokenParam(tokenid,token,tokenendtime));
+
+		if (result == 0) {
+			throw new MemberException("토큰 데이터베이스 등록실패", HttpStatus.INTERNAL_SERVER_ERROR);
+			//서버가 클라이언트의 요청을 처리하는 과정에서 예상치 못한 오류가 발생했다는 것을 나타냄
+		}
+	
+
+		System.out.println("토큰 만료시간체크"+tokenendtime); //db에있는 아이디가 시큐리티를 통해 인증되면 jwt토큰 생성
+		System.out.println("토큰 사용자 확인"+tokenid); //db에있는 아이디가 시큐리티를 통해 인증되면 jwt토큰 생성
+
+
+
+
 		return new LoginResponse(token, req.getId());
 	}
+
+
 
 	private void authenticate(String id, String pwd) {
 		try {

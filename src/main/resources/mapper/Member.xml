@@ -21,6 +21,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 VALUES(#{id}, #{pwd}, #{name}, #{email}, #{roles})
         </insert>
 
+
+        
+        <insert id="createjwttoken" parameterType="com.restfulproject.toyboard.member.dto.param.CreateMemberTokenParam">
+                INSERT INTO member_token(id,token, expiration)
+                VALUES(#{id}, #{token}, #{expiration})
+        </insert>
+
        
 
 

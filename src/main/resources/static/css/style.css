@@ -1,0 +1,171 @@
+body,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #222;
+  font-family: "Instrument Sans", sans-serif;
+}
+button,
+input {
+  color: #222;
+  font-family: "Instrument Sans", sans-serif;
+}
+
+/* popup */
+.popup-1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+}
+.popup-1.active {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-1 > .popup-1-content {
+  width: 450px;
+  height: 550px;
+  background-color: #fff;
+}
+.popup-1__btn-close {
+  width: 30px;
+  height: 30px;
+  color: #222;
+  display: block;
+  font-weight: bold;
+  margin-left: auto;
+  font-size: 15px;
+  padding: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+.popup-1 .btn-close-move {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.popup-1 .btn-close-move .login-txt {
+  font-size: 28px;
+  font-family: "Raleway", sans-serif;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.popup-1 .btn-close-move .login-txt .txt-1 {
+  font-weight: 400;
+}
+.popup-1 .btn-close-move .login-txt .txt-2 {
+  font-weight: 600;
+}
+
+/* 전체 레이아웃 잡기 */
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.btn-area {
+  padding: 30px 0;
+}
+.btn-area > .popup-btn {
+  border: 3px solid #000;
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 5px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.popup-btnlogout {
+  border: 3px solid #000;
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 5px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* login-box */
+.popup-1 .font-move {
+  width: 380px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 55%;
+  text-align: center;
+}
+#login-form {
+  width: 100%;
+  text-align: center;
+}
+#login-form > input {
+  width: 100%;
+  height: 55px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border: 0.75px solid #bbb;
+  background-color: #f8f8f8;
+  outline: 0;
+}
+#login-form > input::placeholder {
+  color: #bbb;
+}
+#login-form > input[type="button"] {
+  color: #fff;
+  font-size: 16px;
+  background-color: #ffc9c9;
+  border: 1px solid #ffb9b9;
+  margin-top: 20px;
+  text-shadow: 1px 1px 1px #aaa;
+  font-weight: 500;
+}
+
+.popup-1 .font-move .fake-line {
+  width: 100%;
+  height: 0.5px;
+  background-image: linear-gradient(
+    to right,
+    #000 15%,
+    rgba(255, 255, 255, 0) 0%
+  );
+  background-position: center;
+  background-size: 5px 2px;
+  background-repeat: repeat-x;
+  margin: 40px 0;
+}
+.popup-1 .font-move .join-box button {
+  width: 100%;
+  height: 55px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border: 0.75px solid #bbb;
+  background-color: #fff;
+  outline: 0;
+  cursor: pointer;
+}
+.popup-1 .font-move .join-box .txt-3 {
+  font-weight: 500;
+  color: #666;
+}
+.popup-1 .font-move .join-box .txt-4 {
+  font-weight: 700;
+  color: #555;
+  padding: 0 15px;
+}

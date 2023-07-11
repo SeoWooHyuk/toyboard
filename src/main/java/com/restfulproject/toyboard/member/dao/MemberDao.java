@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.restfulproject.toyboard.member.domain.Member;
 import com.restfulproject.toyboard.member.dto.param.CreateMemberParam;
+import com.restfulproject.toyboard.member.dto.param.CreateMemberTokenParam;
 
 
 @Mapper
@@ -18,6 +19,9 @@ public interface MemberDao {
  	public Integer isExistUserId(String id); //중복여부확인
 
 	public Integer createMember(CreateMemberParam param);  //화원가입처리
+
+
+	public Integer createjwttoken(CreateMemberTokenParam param);  //화원가입처리
 
 
 }
