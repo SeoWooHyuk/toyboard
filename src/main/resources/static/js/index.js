@@ -56,18 +56,12 @@ $(document).ready(function() {
     $(".popup-1").removeClass("active");
   });  
 
-
   //로그아웃버튼클릭
   $(".popup-btnlogout").click(function () {
     logout.logout();
   }); 
 
-  
- 
-  
-
 });
-
 
 
 //나중을 위한 테스트용
