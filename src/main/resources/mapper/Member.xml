@@ -32,6 +32,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 delete from member_token where id = #{id}
         </delete>
 
+        <select id="findBytoken"  parameterType="String" 
+        resultType="com.restfulproject.toyboard.member.domain.MemberToken">
+                select * from member_token WHERE id=#{id}
+        </select>
+
        
 
 

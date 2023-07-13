@@ -1,6 +1,4 @@
-
-
-export function logout(){
+function logout(){
 
     let idtoken = localStorage.getItem('id');
 
@@ -26,5 +24,7 @@ export function logout(){
         alert("⚠️ " + err.response.data);
     });
 
+
     alert(idtoken + "님, 성공적으로 로그아웃 됐습니다 🔒");
+
 }

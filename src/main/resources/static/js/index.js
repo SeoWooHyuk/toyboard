@@ -1,6 +1,21 @@
+let logout = await import('./logout.js');
+
 let token = localStorage.getItem('access_token');
 let idtoken = localStorage.getItem('id');
+let expiration = localStorage.getItem('expiration');
 
+let expirationcheck =  new Date(expiration);
+let timenow =  new Date();
+console.log(expirationcheck);
+console.log(timenow);
+
+if(expiration != null)
+{
+  if(timenow > expirationcheck)
+  {
+    logout.logout();
+  }
+}
 
 let headers = {
   "Authorization": `Bearer ${localStorage.getItem("access_token")}`
@@ -16,7 +31,7 @@ axios.get("http://localhost:8080",{headers: headers} )
 
 //문서다읽고 를 제일나중에 실행해라
 $(document).ready(function() {
-  
+ 
   var html = ''; //리스트뽑아내는테스트
   // var html2 = ''; //리스트뽑아내는테스트
   
@@ -26,7 +41,7 @@ $(document).ready(function() {
   html  += '</div>';
   }else{
   html  += '<div class="btn-area">';
-  html  += '<button class="popup-btnlogout" onClick="logout()">Logout</button>';
+  html  += '<button class="popup-btnlogout" >Logout</button>';
   html  += '</div>';
   }
 
@@ -40,6 +55,16 @@ $(document).ready(function() {
   $(".popup-1__btn-close").click(function () {
     $(".popup-1").removeClass("active");
   });  
+
+
+  //로그아웃버튼클릭
+  $(".popup-btnlogout").click(function () {
+    logout.logout();
+  }); 
+
+  
+ 
+  
 
 });
 

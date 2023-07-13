@@ -18,6 +18,7 @@ function login(){
           // JWT 토큰 저장
           localStorage.setItem("access_token", resp.data.jwt);
           localStorage.setItem("id", resp.data.id);
+          localStorage.setItem("expiration", resp.data.expiration);
 
           // window.history.back();
           window.location.reload();

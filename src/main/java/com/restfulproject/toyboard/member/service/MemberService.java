@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.restfulproject.toyboard.jwt.JwtTokenUtil;
 import com.restfulproject.toyboard.member.dao.MemberDao;
+import com.restfulproject.toyboard.member.domain.MemberToken;
 import com.restfulproject.toyboard.member.dto.param.CreateMemberParam;
 import com.restfulproject.toyboard.member.dto.param.CreateMemberTokenParam;
 import com.restfulproject.toyboard.member.dto.request.JoinRequest;
@@ -26,6 +27,7 @@ import com.restfulproject.toyboard.member.exception.MemberException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
+import java.util.Optional;
 @Service
 @Transactional //트랜잭션관리를 위한 어노테이션
 public class MemberService {
@@ -95,28 +97,33 @@ public class MemberService {
 		String tokenid = jwtTokenUtil.getUsernameFromToken(token);  //아이디
 		Date tokenendtime = jwtTokenUtil.getExpirationDateFromToken(token); //만료시간
 
-		Integer result = dao.createjwttoken(new CreateMemberTokenParam(tokenid,token,tokenendtime));
+		System.out.println("토큰 만료시간"+tokenendtime);
+
+		
+		Optional<MemberToken> mtoken = dao.findBytoken(tokenid); //토큰 셀렉문
+		if(!mtoken.isEmpty()) //토큰 로그인 중복처리
+		{
+			if(tokenid.equals(mtoken.get().getId()))
+			{
+				System.out.println("로그인중인 아이디입니다." );
+				throw new MemberException("로그인중인 아이디입니다.", HttpStatus.BAD_REQUEST);
+			}
+		}
+
+		Integer result = dao.createjwttoken(new CreateMemberTokenParam(tokenid,token,tokenendtime)); //토큰 db에생성
 
 		if (result == 0) {
 			throw new MemberException("토큰 데이터베이스 등록실패", HttpStatus.INTERNAL_SERVER_ERROR);
 			//서버가 클라이언트의 요청을 처리하는 과정에서 예상치 못한 오류가 발생했다는 것을 나타냄
 		}
-	
 
-		System.out.println("토큰 만료시간체크"+tokenendtime); //db에있는 아이디가 시큐리티를 통해 인증되면 jwt토큰 생성
-		System.out.println("토큰 사용자 확인"+tokenid); //db에있는 아이디가 시큐리티를 통해 인증되면 jwt토큰 생성
-
-
-
-
-		return new LoginResponse(token, req.getId());
+		return new LoginResponse(token, req.getId(),tokenendtime);
 	}
 
 
 	public LogoutResponse logout(LogoutRequest req) {
 
-		System.out.println(req.getId());
-		// dao.deletejwttoken(req.getId());
+		dao.deletejwttoken(req.getId());
 		return new LogoutResponse(null, req.getId());
 	}
 
@@ -144,6 +151,8 @@ public class MemberService {
 			throw new MemberException("비밀번호가 일치하지 않습니다.", HttpStatus.BAD_REQUEST);
 		}
 	}
+
+	
 }
 
 

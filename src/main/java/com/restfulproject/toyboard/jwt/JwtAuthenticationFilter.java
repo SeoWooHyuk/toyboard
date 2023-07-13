@@ -40,7 +40,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String userId = null;
         String authToken = null;
 
-            System.out.println("읽었나"+header);
+            // System.out.println("읽었나"+header);
         if (header != null && header.startsWith(TOKEN_PREFIX)) {
             authToken = header.replace(TOKEN_PREFIX,"");
             try {
@@ -49,7 +49,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 System.out.println("JwtAuthenticationFilter: token error (fail get user id) !");
                 e.printStackTrace();
             } catch (ExpiredJwtException e) {
-                System.out.println("JwtAuthenticationFilter: expired token !");
+                System.out.println("JwtAuthenticationFilter: expired token !"); //토큰이만료됨
                 e.printStackTrace();
             } catch(SignatureException e){
                 System.out.println("JwtAuthenticationFilter: invalid member !");
@@ -61,7 +61,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 // e.printStackTrace();
             }
         } else {
-            System.out.println("JwtAuthenticationFilter: request that do not require authorization.");
+            // System.out.println("JwtAuthenticationFilter: request that do not require authorization.");
         }
 
         if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
