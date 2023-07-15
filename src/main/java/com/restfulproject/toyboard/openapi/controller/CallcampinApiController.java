@@ -5,9 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.restfulproject.toyboard.openapi.domain.Camping;
+import com.restfulproject.toyboard.openapi.domain.OpenApiCamping;
+import com.restfulproject.toyboard.openapi.dto.param.OpenApiCampingPram;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -15,6 +18,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @RestController
@@ -42,21 +47,34 @@ public class CallcampinApiController  {
             while((returnLine = bufferedReader.readLine()) != null) {
                 result.append(returnLine);
             }
-            
             jsonPrintString = result.toString();
 
+            // Pattern pattern = Pattern.compile("\\s"); //json필드이름 공백제거
+            // Matcher matcher = pattern.matcher(jsonPrintString);
+            // String jsonpaten = matcher.replaceAll("");
 
-            //밑에하고 똑같은 역활
-            // Gson gson = new Gson(); 
-            // JsonElement root = gson.fromJson(jsonPrintString, JsonElement.class);
-            // JsonObject jsonObj = root.getAsJsonObject();
-            // System.out.println(jsonObj);
-    
-            // ObjectMapper mapper = new ObjectMapper();
-            // Camping data = mapper.readValue( jsonPrintString , Camping.class );
+          
+            //자바 객체로 변환작업1
+            // Gson gson = new GsonBuilder().create();
+            // CreateCampingPram param = gson.fromJson(jsonpaten, CreateCampingPram.class); 
 
-            List<Camping> personList = new ArrayList<>();
-     
+            //자바 객체로 변환작업2
+            ObjectMapper objectMapper = new ObjectMapper();
+            OpenApiCampingPram param = objectMapper.readValue(jsonPrintString,OpenApiCampingPram.class);
+            System.out.println(param.getData());
+
+
+            List<OpenApiCamping> dataList = param.getData();
+            for (OpenApiCamping camping : dataList) {
+                
+            }
+
+
+            //만든거 다시 자바객체로 뱐환
+            ObjectMapper objectMapper2 = new ObjectMapper();
+            String jsonString = objectMapper2.writeValueAsString(param.getData());
+            System.out.println(jsonString);
+
 
         } catch (Exception e) {
             e.printStackTrace();
