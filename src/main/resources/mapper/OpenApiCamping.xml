@@ -6,8 +6,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.restfulproject.toyboard.openapi.dao.OpenApiCampingDao"> 
 	
         <insert id="createOpenApi" parameterType="com.restfulproject.toyboard.openapi.domain.OpenApiCamping">
-                INSERT INTO camping_facilities(facility_name, category1, category2, category3, sido_name)
-                VALUES(#{facility_name}, #{category1}, #{category2}, #{category3}, #{sido_name})
+                INSERT INTO camping_facilities(facility_name, category1, category2, category3, sido_name,sigungu_name,eupmyeondong_name,
+                ri_name,bungi,road_name,building_num,latitude,longitude,zip_code, road_address,jibun_address,
+                phone_num,website,business_entity,weekday_operating_hours,weekend_operating_hours,spring_operating_hours,
+                summer_operating_hours,fall_operating_hours,winter_operating_hours,
+                amenities_electricity,amenities_hot_water,amenities_wifi,amenities_firewood_sales,amenities_hiking_trail,
+                amenities_water_playground,amenities_playground,amenities_mart,amenities_restroom_num,amenities_shower_room_num,
+                amenities_sink_num,amenities_fire_extinguisher_num,
+                surrounding_facilities_fishing,surrounding_facilities_hiking_trail,surrounding_facilities_water_play_cool,
+                surrounding_facilities_water_play_leisure,surrounding_facilities_water_play_gorge,surrounding_facilities_water_play_river,
+                surrounding_facilities_water_play_pool,surrounding_facilities_youth_experience,
+                surrounding_facilities_rural_experience,surrounding_facilities_children_playground,
+                glamping_bed,glamping_tv,glamping_refrigerator,glamping_wireless_internet,
+                glamping_internal_bathroom,glamping_airconditioner,glamping_heating_equipment,glamping_cooking_tools,
+                facility_features,facility_introduction,last_update_date
+                )
+                VALUES(#{facility_name}, #{category1}, #{category2}, #{category3}, #{sido_name}, #{sigungu_name} ,#{eupmyeondong_name},
+                #{ri_name},#{bungi},#{road_name},#{building_num},#{latitude},#{longitude},#{zip_code},#{road_address},#{jibun_address},
+                #{phone_num},#{website},#{business_entity},#{weekday_operating_hours},#{weekend_operating_hours},#{spring_operating_hours},
+                #{summer_operating_hours},#{fall_operating_hours},#{winter_operating_hours},
+                #{amenities_electricity},#{amenities_hot_water},#{amenities_wifi},#{amenities_firewood_sales},#{amenities_hiking_trail},
+                #{amenities_water_playground},#{amenities_playground},#{amenities_mart},#{amenities_restroom_num},#{amenities_shower_room_num},
+                #{amenities_sink_num},#{amenities_fire_extinguisher_num},
+                #{surrounding_facilities_fishing},#{surrounding_facilities_hiking_trail},#{surrounding_facilities_water_play_cool},
+                #{surrounding_facilities_water_play_leisure},#{surrounding_facilities_water_play_gorge},#{surrounding_facilities_water_play_river},
+                #{surrounding_facilities_water_play_pool},#{surrounding_facilities_youth_experience},
+                #{surrounding_facilities_rural_experience},#{surrounding_facilities_children_playground},
+                #{glamping_bed},#{glamping_tv},#{glamping_refrigerator},#{glamping_wireless_internet},
+                #{glamping_internal_bathroom},#{glamping_airconditioner},#{glamping_heating_equipment},#{glamping_cooking_tools},
+                #{facility_features}, #{facility_introduction}, #{last_update_date}
+                )
         </insert>
 
 </mapper>

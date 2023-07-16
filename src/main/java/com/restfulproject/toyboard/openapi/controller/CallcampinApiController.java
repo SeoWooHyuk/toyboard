@@ -41,8 +41,8 @@ public class CallcampinApiController  {
        
         try {
             String apiUrl = "https://api.odcloud.kr/api/15111395/v1/uddi:8c528230-eda4-4d83-855a-bee73605e49f?"+
-            "page=1"+
-            "&perPage=5"+
+            "page=3"+
+            "&perPage=1000"+
             "&serviceKey=NWl%2B%2Fgv9HNQV1IUv2zQ1ndFtKh49iUxJ4UFARogWEJbUeEDVFMn6uc33muj%2B0zFh%2BK5L4Kr7CUKJXGDquJXniA%3D%3D";
             URL url = new URL(apiUrl);
             
@@ -74,6 +74,8 @@ public class CallcampinApiController  {
 
 
             List<OpenApiCamping> dataList = param.getData();
+
+            System.out.println(dataList.get(0).getLatitude());
             for (OpenApiCamping camping : dataList) {
                 OpenApiCamping cam = new OpenApiCamping();
                 cam.setFacility_name(camping.getFacility_name());
@@ -135,15 +137,14 @@ public class CallcampinApiController  {
                 cam.setFacility_introduction(camping.getFacility_introduction());
                 cam.setLast_update_date(camping.getLast_update_date());
 
-        
-                dao.createOpenApi(cam);
+                // dao.createOpenApi(cam);
             }
 
 
             //만든거 다시 자바객체로 뱐환
             ObjectMapper objectMapper2 = new ObjectMapper();
             String jsonString = objectMapper2.writeValueAsString(param.getData());
-            System.out.println(jsonString);
+            // System.out.println(jsonString);
 
 
         } catch (Exception e) {
