@@ -24,7 +24,6 @@ for (var i = 0; i < xymap.length; i ++) {
 
   latlng[i] = new kakao.maps.LatLng( parseFloat(xymap[i].위도) , parseFloat(xymap[i].경도));
   content[i] = '<div id="test">'+xymap[i].시설명+'</div>';
-  iwRemoveable = true;
 
   // 마커를 생성합니다
   var marker = new kakao.maps.Marker({
@@ -35,7 +34,6 @@ for (var i = 0; i < xymap.length; i ++) {
   // 마커에 표시할 인포윈도우를 생성합니다 
   var infowindow = new kakao.maps.InfoWindow({
       content: content[i] // 인포윈도우에 표시할 내용
-
   });
 
   // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
