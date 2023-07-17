@@ -21,6 +21,10 @@ let headers = {
   "Authorization": `Bearer ${localStorage.getItem("access_token")}`
 }  
 
+
+
+
+
 axios.get("http://localhost:8080",{headers: headers} )
 .then((resp) => {}).catch((err) => {});
 
@@ -39,8 +43,8 @@ $(document).ready(function () {
     html += "</div>";
   }
 
-  $("#loginout").html(html);
-  // $('#loginoutbox2').html(html2); 테스트용
+  $("#loginout").html(html); //로그인 로그아웃 보여줌
+
 
   $(".popup-btn").click(function () {
     $(".popup-1").addClass("active");
@@ -60,10 +64,18 @@ $(document).ready(function () {
 
   //로그아웃버튼클릭
   $(".popup-btnlogout").click(function () {
-    logout.logout();
+      logout.logout();
   }); 
-  
 
+  $("#camping").click(function () {
+    if (idtoken == null) {
+      alert("캠핑장은 로그인후 사용가능합나다.")
+    }else{
+      window.location.href = "/map";
+    }
+  }); 
+
+ 
 });
 
 //나중을 위한 테스트용
