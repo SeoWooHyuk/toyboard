@@ -17,8 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </select>
 
         <insert id="createMember" parameterType="com.restfulproject.toyboard.member.dto.param.CreateMemberParam">
-                INSERT INTO member(id, pwd, name, email, roles)
-                VALUES(#{id}, #{pwd}, #{name}, #{email}, #{roles})
+                INSERT INTO member(id, pwd, name, bday,  postcode, address, detailaddress, roles)
+                VALUES(#{id}, #{pwd}, #{name}, #{bday}, #{postcode}, #{address}, #{detailaddress}, #{roles})
         </insert>
 
 

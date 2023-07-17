@@ -2,7 +2,7 @@ function login(){
 
   const id = document.getElementsByName("id")[0].value;
   const pwd = document.getElementsByName("pwd")[0].value;
-
+    
   const req = {
       id: id,
       pwd: pwd

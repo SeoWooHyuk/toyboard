@@ -1,20 +1,41 @@
+/* SUIT Font */
+@font-face {
+  font-family: "SUIT-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
 body,
 ul,
-li {
+li,
+button {
   margin: 0;
   padding: 0;
   list-style: none;
-  color: #222;
-  font-family: "Instrument Sans", sans-serif;
+  font-family: "SUIT-Regular";
 }
-button,
-input {
-  color: #222;
-  font-family: "Instrument Sans", sans-serif;
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  font-family: "Yeseva One", cursive;
+}
+
+.container {
+  width: 1180px;
+  padding: 0 10px;
+  margin: 0 auto;
 }
 
 /* popup */
-.popup-1 {
+.popup-1,
+.popup-2 {
   position: fixed;
   top: 0;
   left: 0;
@@ -26,8 +47,10 @@ input {
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
+  z-index: 6;
 }
-.popup-1.active {
+.popup-1.active,
+.popup-2.active {
   opacity: 1;
   visibility: visible;
 }
@@ -36,7 +59,13 @@ input {
   height: 550px;
   background-color: #fff;
 }
-.popup-1__btn-close {
+.popup-2 > .popup-2-content {
+  width: 450px;
+  height: 650px;
+  background-color: #fff;
+}
+.popup-1__btn-close,
+.popup-2__btn-close {
   width: 30px;
   height: 30px;
   color: #222;
@@ -51,57 +80,25 @@ input {
   border-radius: 10px;
   border: 1px solid #fff;
 }
-.popup-1 .btn-close-move {
+.popup-1 .btn-close-move,
+.popup-2 .btn-close-move {
   padding: 30px;
   display: flex;
   align-items: center;
   position: relative;
 }
-.popup-1 .btn-close-move .login-txt {
-  font-size: 28px;
-  font-family: "Raleway", sans-serif;
+.popup-1 .btn-close-move .login-txt,
+.popup-2 .btn-close-move .login-txt {
+  font-size: 24px;
   position: absolute;
   left: 50%;
+  font-weight: 600;
   transform: translate(-50%, 0);
-}
-.popup-1 .btn-close-move .login-txt .txt-1 {
-  font-weight: 400;
-}
-.popup-1 .btn-close-move .login-txt .txt-2 {
-  font-weight: 600;
-}
-
-/* 전체 레이아웃 잡기 */
-.container {
-  width: 1200px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-.btn-area {
-  padding: 30px 0;
-}
-.btn-area > .popup-btn {
-  border: 3px solid #000;
-  background-color: #fff;
-  border-radius: 50px;
-  padding: 5px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.popup-btnlogout {
-  border: 3px solid #000;
-  background-color: #fff;
-  border-radius: 50px;
-  padding: 5px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
 }
 
 /* login-box */
-.popup-1 .font-move {
+.popup-1 .font-move,
+.popup-2 .font-move {
   width: 380px;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -109,7 +106,8 @@ input {
   top: 55%;
   text-align: center;
 }
-#login-form {
+#login-form,
+#join-form {
   width: 100%;
   text-align: center;
 }
@@ -122,20 +120,44 @@ input {
   border: 0.75px solid #bbb;
   background-color: #f8f8f8;
   outline: 0;
+  font-family: "SUIT-Regular";
 }
-#login-form > input::placeholder {
+#join-form input {
+  width: 100%;
+  height: 45px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  border: 0.75px solid #bbb;
+  background-color: #f8f8f8;
+  outline: 0;
+  font-family: "SUIT-Regular";
+}
+#login-form > input::placeholder,
+#join-form input::placeholder {
   color: #bbb;
 }
-#login-form > input[type="button"] {
+#login-form > .login-btn,
+#join-form > .join-btn {
   color: #fff;
   font-size: 16px;
-  background-color: #ffc9c9;
-  border: 1px solid #ffb9b9;
+  background-color: #222;
   margin-top: 20px;
-  text-shadow: 1px 1px 1px #aaa;
-  font-weight: 500;
+  border: 0;
+  cursor: pointer;
 }
-
+#join-form .address-box {
+  display: flex;
+  color: #bbb;
+}
+#join-form .ad-btn {
+  width: 200px;
+  margin-left: 10px;
+  color: #777;
+  border: 1px solid #777;
+  background-color: #fff;
+  cursor: pointer;
+}
 .popup-1 .font-move .fake-line {
   width: 100%;
   height: 0.5px;
@@ -168,4 +190,102 @@ input {
   font-weight: 700;
   color: #555;
   padding: 0 15px;
+}
+
+/* logo-box */
+.top-bar {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-bar > .logo-box .logo-txt {
+  font-size: 14px;
+  color: #666;
+  padding: 5px 0;
+}
+/* btn-area */
+.btns {
+  border: 3px solid #000;
+  border-radius: 50px;
+  background-color: transparent;
+  padding: 5px 20px;
+  margin: 0 3px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.font-20 {
+  font-size: 20px;
+}
+
+/* main-box */
+.main-box > ul {
+  display: flex;
+}
+.main-box > ul > li {
+  margin: 80px 10px;
+  border-radius: 50%;
+  background-color: #999;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-box > ul > li > .txt-box {
+  position: absolute;
+  z-index: 5;
+  text-align: center;
+}
+.main-box > ul > li > .txt-box > .icons {
+  display: flex;
+  justify-content: center;
+}
+.main-box > ul > li > .txt-box > .icons > .img-box {
+  width: 50px;
+}
+.main-box > ul > li > .txt-box > .icons > .img-box > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.main-box > ul > li > .txt-box > .titles {
+  padding: 8px 0;
+}
+.main-box > ul > li > .txt-box > .infos > span {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 5px 0;
+}
+.main-box > ul > li > .img-box {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  position: relative;
+}
+.main-box > ul > li > .img-box::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  height: 100%;
+  content: "";
+  transition: height 0.3s ease-out;
+  background-color: #fff;
+  opacity: 0.3;
+  border-radius: 50%;
+}
+.main-box > ul > li > .img-box > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+/* footer */
+.footer {
+  font-size: 13px;
+  color: #999;
+  text-align: right;
 }

@@ -17,7 +17,10 @@ public class CreateMemberParam  {
     private String id;
     private String name;
     private String pwd;
-    private String email;
+    private String bday;
+    private String postcode;
+    private String address;
+    private String detailaddress;
     private String roles;
 
 
@@ -25,7 +28,10 @@ public class CreateMemberParam  {
         this.id = req.getId();
         this.pwd = encodedPwd;
   	    this.name = req.getName();
-		this.email = req.getEmail();
+        this.bday = req.getBday();
+        this.postcode = req.getPostcode();
+        this.address = req.getAddress();
+        this.detailaddress = req.getDetailaddress();
         this.roles = roles;
     }
 

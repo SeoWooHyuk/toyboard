@@ -1,5 +1,3 @@
-
-
 export function logout(){
 
     let idtoken = localStorage.getItem('id');

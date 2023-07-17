@@ -14,11 +14,6 @@ public class MemberViewController {
 		return "index";
 	}  
 
-    @RequestMapping(value="/login")
-	public String login() {
-		return "login";
-	}
-
 	@RequestMapping(value="/map")
 	public String map() {
 		return "map";
