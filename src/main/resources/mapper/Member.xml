@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         
         <insert id="createjwttoken" parameterType="com.restfulproject.toyboard.member.dto.param.CreateMemberTokenParam">
                 INSERT INTO member_token(id,token, expiration,updatedat)
-                VALUES(#{id}, #{token}, #{expiration},updatedat) ON DUPLICATE KEY  UPDATE updatedat = NOW()
+                VALUES(#{id}, #{token}, #{expiration}, updatedat ) ON DUPLICATE KEY  UPDATE updatedat = NOW()
         </insert>
 
         <delete id="deletejwttoken" parameterType="String">

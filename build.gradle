@@ -10,6 +10,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	sourceCompatibility = '11'
+	targetCompatibility = '11'
 }
 
 configurations {
@@ -32,6 +33,8 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+
+	
 
 	//시큐리티
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -61,6 +64,8 @@ dependencies {
 	implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '4.0.2'
 
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.7.13'
+
+
 
 
 }
