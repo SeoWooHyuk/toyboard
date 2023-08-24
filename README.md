@@ -6,7 +6,7 @@
 |---|---|
 | 인원 | 2 | 
 | 서우혁 | backend | 
-| 유우정| frontend | 
+| | frontend | 
 
 | Skill Set   |     | 
 |---|---|
